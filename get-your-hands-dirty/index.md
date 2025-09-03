@@ -36,10 +36,3 @@ Extras
 
 - `assets/` — supporting images and diagrams.
 - `README.md` — course overview and Git exercises (top-level repository README).
-
-Suggested flow for the course
-
-- Start with Overview → Getting started.
-- Walk through Installation and add a device (Devices).
-- Teach branching: make a small edit to a device page, commit, and open a PR.
-- Continue with Scenes and Automations, then Security & Privacy.
