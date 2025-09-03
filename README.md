@@ -1,7 +1,14 @@
 # Git for docs: basics, not only for beginners
 
 ## Description
-During this workshop you will learn the basics of Git. Together, we will explore this amazing tool by not only getting our hands dirty with the most useful commands but also by digging into the philosophy behind it and the way it works. Mixing theory with practice will allow you to bridge gaps in your knowledge about Git and build solid foundations for further development. That's why we believe that not only beginners but also people who already have some Git skills can benefit from this workshop.
+
+During this workshop you will learn the basics of Git. Together, we will explore
+this amazing tool by not only getting our hands dirty with the most useful
+commands but also by digging into the philosophy behind it and the way it works.
+Mixing theory with practice will allow you to bridge gaps in your knowledge
+about Git and build solid foundations for further development. That's why we
+believe that not only beginners but also people who already have some Git skills
+can benefit from this workshop.
 
 ## Learning objectives
 
@@ -17,12 +24,12 @@ During this workshop you will learn the basics of Git. Together, we will explore
 
 - Git config
 - Pull changes from remote
-- Amend
 - Create a branch
-- Create a tag
 - Stage, commit, and push changes
+- Amend
 - Create a PR
 - Merge vs rebase
+- Create a tag
 - Revert
 - Git history
 
@@ -30,10 +37,11 @@ During this workshop you will learn the basics of Git. Together, we will explore
 
 - Reset
 - Force push
-- Squash 
+- Squash
 
 ## Hardware and software requirements
 
 - A laptop with Git installed
 - VS Code
 - A GitHub account
+- This repo cloned to your machine
