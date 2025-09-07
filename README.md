@@ -41,7 +41,7 @@ can benefit from this workshop.
 
 ## Hardware and software requirements
 
-- A laptop with Git installed
-- VS Code
-- A GitHub account
+- A laptop with Git installed, preferably the latest version.
+- VS Code. Make sure you can launch the app from the command line: https://code.visualstudio.com/docs/configure/command-line#_launching-from-command-line
+- A GitHub account. Make sure you have an SSH key or a Personal Access Token configured for your account. You will need it for cloning repos.
 - This repo cloned to your machine
