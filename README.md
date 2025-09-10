@@ -58,6 +58,7 @@ can benefit from this workshop.
 ### Advanced concepts (theoretical)
 
 - Reset
+  - Soft, mixed, hard
 - Force push
 - Squash
 
