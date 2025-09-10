@@ -49,6 +49,9 @@ can benefit from this workshop.
   - Everyone has their own branch and PR
   - In this workshop, you cannot merge until you receive an approval from the
     repo owner
+  - Add comments, suggestions, and give approvals
+  - Cannot merge because the base branch is out of date - update your branch
+  - When all is well, merge!
 - Merge vs rebase
   - default pull strategy
 - Create a tag
