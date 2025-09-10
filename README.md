@@ -22,29 +22,50 @@ can benefit from this workshop.
 
 ### Practical exercises
 
+- Cloning a repo
+  - Clone an existing repo
+  - Initialize your own repo
 - Git config 3 types: system, global, and local
   - username and email
   - diff editor
   - autocorrect
   - list, unset, edit
-- Cloning a repo
-  - Clone an existing repo
-  - Initialize your own repo
 - Create a branch
   - Before you create, remember to pull changes from remote
   - Branch naming conventions
   - How to create
+  - List existing branches
   - How to publish branch (`git push --set-upstream`)
 - Stage, commit, and push changes
-  - Make changes
+  - We will make a deliberate change to cause a conflict later on, e.g., change
+    the header in `intro.md`
   - Check status (`git status`, `git diff`, `git diff --staged`)
   - `git add`
   - Check status again
-  - If you make changes now, you need to add them again
   - `git commit`
-  - Check status one more time
+  - Check status
+  - If you make changes now, you need to add them again; in `style-guide.md` add
+    a new H2
+  - status
+  - Make another change to the same `style-guide.md` file
+  - status - the change was not staged
+  - `git add`
+  - `git status`
+  - `git commit`
   - `git push`
-  - Amend a previous commit and force push
+  - Change something again. Amend the last commit and force push.
+- Revert
+  - Before you've committed your changes, you can use `git checkout` to "undo"
+    changes to a single file
+  - With `git reset`, you can "undo" changes without altering history
+  - `git clean` to remove untracked files
+- Git history
+  - `git log --oneline`
+- Merge vs rebase
+  - rebase changes history, requires force pushes - could be problematic when
+    multiple people are working on one branch
+  - merge preserves history, but it adds a "merge commit"
+  - default pull strategy
 - Create a PR
   - All of this happens in GitHub
   - Everyone has their own branch and PR
@@ -53,18 +74,6 @@ can benefit from this workshop.
   - Add comments, suggestions, and give approvals
   - Cannot merge because the base branch is out of date - update your branch
   - When all is well, merge!
-- Merge vs rebase
-  - default pull strategy
-  - rebase changes history, requires force pushes - could be problematic when
-    multiple people are working on one branch
-  - merge preserves history, but it adds a "merge commit"
-- Revert
-  - Before you've committed your changes, you can use `git checkout` to "undo"
-    changes to a single file
-  - With `git reset`, you can "undo" changes without altering history
-  - `git clean` to remove untracked files
-- Git history
-  - `git log --oneline`
 
 ### Advanced concepts (theoretical)
 

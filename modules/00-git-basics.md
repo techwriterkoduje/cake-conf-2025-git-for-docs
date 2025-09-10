@@ -20,6 +20,12 @@ Key ideas (plain language):
 - Remote: a copy of the repo stored on a server (for example, GitHub) that your
   team can share.
 
+## Distributed VCS
+
+## Git areas: working copy, local, remote
+
+## Git states: untracked, staged, committed, pushed
+
 ## How Git helps your writing process
 
 - Keep a clear history: Every commit tells you who changed what and why. That
@@ -77,15 +83,6 @@ GitLab, or Bitbucket) have free tiers that are more than sufficient for
 documentation projects. Because Git is ubiquitous in software teams, learning it
 helps you collaborate more smoothly with developers and understand their
 workflows.
-
-## Quick tips to get started (non-technical)
-
-- Start with a simple GUI client or an editor that integrates Git (many have
-  easy interface buttons for commit/push/pull).
-- Use short, meaningful commit messages: say what changed and why.
-- Make small commits focused on one idea — they’re easier to review.
-- Don’t be afraid of conflicts; treat them as an invitation to coordinate with a
-  colleague.
 
 ## Wrap-up
 
