@@ -23,37 +23,9 @@ can benefit from this workshop.
 ### Practical exercises
 
 - Cloning a repo
-  - Clone an existing repo
-  - Initialize your own repo
-- Git config 3 types: system, global, and local
-  - username and email
-  - diff editor
-  - autocorrect
-  - list, unset, edit
-- Create a branch
-  - Before you create, remember to pull changes from remote
-  - Branch naming conventions
-  - How to create
-  - List existing branches
-  - How to publish branch (`git push --set-upstream`)
-- Stage, commit, and push changes
-  - We will make a deliberate change to cause a conflict later on, e.g., change
-    the header in `intro.md`
-  - Check status (`git status`, `git diff`, `git diff --staged`)
-  - `git add`
-  - Check status again
-  - `git commit`
-  - Check status
-  - If you make changes now, you need to add them again; in `style-guide.md` add
-    a new H2
-  - status
-  - Make another change to the same `style-guide.md` file
-  - status - the change was not staged
-  - `git add`
-  - `git status`
-  - `git commit`
-  - `git push`
-  - Change something again. Amend the last commit and force push.
+- Git config and the most important settings
+- Working with branches
+- Making changes: stage, commit, and push
 - Revert
   - Before you've committed your changes, you can use `git checkout` to "undo"
     changes to a single file
