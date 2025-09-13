@@ -47,10 +47,35 @@ You should see the change in the unstaged diff. Now stage and observe the status
 again:
 
 ```
-git add intro.md
+git add get-your-hands-dirty/intro.md
 git status
 git diff --staged
 ```
+
+---
+
+### Aside: commit message conventions
+
+Before you write your first commit message, a short note on conventions. Clear
+messages make history useful. A common convention used by teams is:
+
+```
+<type>(scope?): short summary
+
+optional longer description
+```
+
+Common `type` values: `feat`, `fix`, `docs`, `chore`, `refactor`, `test`. For
+example:
+
+```
+docs(intro): clarify workshop purpose
+```
+
+Keep the first line under ~72 characters and use the body for details when
+needed.
+
+---
 
 Now commit the change:
 
@@ -88,7 +113,7 @@ git status
 Stage the file and commit both changes together:
 
 ```
-git add style-guide.md
+git add get-your-hands-dirty/style-guide.md
 git status
 git commit -m "docs: add accessibility guidance and extra note"
 ```
