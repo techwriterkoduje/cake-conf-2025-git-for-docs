@@ -1,26 +1,72 @@
 # Git basics
 
-This short introduction explains what Git is, why it matters for technical
-writers, and the practical benefits you'll get from learning it.
+This short introduction explains the following key concepts that you need to learn to
+benefit fully from practical exercises in this workshop:
 
-## What is Git?
+- What version control system (VCS) is
+- Different types of version control systems
+- What Git is
+- Why you should care about Git if you're a technical writer
 
-Git is a version control system — a tool that records snapshots of your work
-over time. Think of it like a save history for your documents where every
-meaningful change is recorded with a short note (a "commit"). You can go back to
-any earlier snapshot, compare versions, or restore content if something goes
-wrong.
+## Version control system (VCS)
 
-Key ideas (plain language):
+It's a tool that records changes to a file or set of files over time so that you can recall specific versions later.
+For example, a VCS allows you to:
 
-- Repository (repo): a folder with your project and a Git history.
-- Commit: a saved snapshot with a message describing the change.
-- Branch: a separate line of work where you can experiment without affecting the
-  main content.
-- Remote: a copy of the repo stored on a server (for example, GitHub) that your
-  team can share.
+- Revert the entire project to a previous state
+- Compare changes
+- See who last modified something
+- Analyze the history of changes to find a bug
 
-## Distributed VCS
+Generally, using a VCS means that if something goes wrong, you can recover.
+
+## Evolution of version control systems
+
+Here's a brief history of version control systems that will allow you to understand
+how Git is different from other tools of this type.
+Images in this section comes from the "Ry's Git Tutorial" book.
+
+### The "final" solution (aka files and folders)
+
+Before a VCS was invented, the only way to track versions of a project
+was to create a copy and give it a new name. Just think how many times you saved
+a file or folder whose name contained the "final" word :)
+This solution was very prone to errors, such as overwriting the wrong file or mislabelling a folder.
+
+![Diagram showing controlling versions of a project using files and folders](img/files-and-folders.png)
+
+### Local VCS
+
+Because creating copies of files and folders wasn't a good solution,
+developers invented local Version Control Systems. These tools stored
+files and folders in a database. Instead of accessing files directly,
+you "checked out" a copy of the project.
+This solution was a big step forward, but it didn't offer an efficient way
+of sharing code among a group of programmers because everything happened locally.
+
+![Diagram showing controlling versions of a project using a local VCS](img/local-vcs.png)
+
+### Centralized VCS
+
+A centralized VCS is similar to a local VCS, but the project history is stored
+on a server. You check out files and then save them back into the project over network. This solution allows you to collaborate on a project with others through
+a single point of entry. To solve the issue of creating conflicting changes at the same time, a CVCS prevents you from overriding others' work (file checkout, file lock). A CVCS has another downside - it has a single point of failure. If the server goes down or becomes corrupted, you can't do your work or even lose the entire data.
+An example of a CVCS is Subversion.
+
+![Diagram showing controlling versions of a project using a centralized VCS](img/centralized-vcs.png)
+
+### Distributed Version Control System
+
+A distributed VCS solves the issue of collaboration in a larger group. Instead of checking out the latest snapshot of the files, you have your own local copy of the entire project. It allows you to work independently and put off merging conflicts until your convenience. A DVCS is also much faster because you don't have perform actions over a network. Also, the risk of losing data is much lower compared to a CVCS because every user has a complete copy of the entire project.
+An example of a DVCS is Git.
+
+![Diagram showing controlling versions of a project using a distributed VCS](img/distributed-vcs.png)
+
+## Git
+
+It's a free and open-source DVCS, which propels most of the software development industry.
+When the Linux community lost their free license for BitKeeper (commercial DVCS) in 2005, they decided to develop their own system. That's an extremely short history of
+Git.
 
 ## Git areas: working copy, local, remote
 
@@ -76,17 +122,26 @@ Practical workflow for teams (high level):
 - Transferable skill. Git skills apply across roles and projects —
   documentation, content design, product specs, and beyond.
 
-## Git is free and widely used
-
-Git itself is free open-source software. Online hosting services (like GitHub,
-GitLab, or Bitbucket) have free tiers that are more than sufficient for
-documentation projects. Because Git is ubiquitous in software teams, learning it
-helps you collaborate more smoothly with developers and understand their
-workflows.
-
 ## Wrap-up
 
 Git is a practical tool for writers: it keeps a safe history, enables parallel
 work, improves review processes, and connects your docs to the rest of the
 product lifecycle. Learning a few basic commands or using a friendly Git client
 will pay off quickly in day‑to‑day documentation work.
+
+## NOTES
+
+Git is a Version Control System (VCS) — a tool that records snapshots of your work
+over time. Think of it like a save history for your documents where every
+meaningful change is recorded with a short note (a "commit"). You can go back to
+any earlier snapshot, compare versions, or restore content if something goes
+wrong.
+
+Key ideas (plain language):
+
+- Repository (repo): a folder with your project and a Git history.
+- Commit: a saved snapshot with a message describing the change.
+- Branch: a separate line of work where you can experiment without affecting the
+  main content.
+- Remote: a copy of the repo stored on a server (for example, GitHub) that your
+  team can share.
