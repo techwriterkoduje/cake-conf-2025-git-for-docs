@@ -28,7 +28,6 @@ can benefit from this workshop.
 - Making changes: stage, commit, and push
 - Revert
 - Git history
-  - `git log --oneline`
 - Merge vs rebase
   - rebase changes history, requires force pushes - could be problematic when
     multiple people are working on one branch
