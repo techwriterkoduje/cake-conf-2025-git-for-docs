@@ -5,47 +5,58 @@ concepts that are useful to understand as a technical writer collaborating on
 documentation: tags (for releases), `git reset` (to move or edit history),
 force-pushing, and squashing commits via interactive rebase.
 
-## Tags — marking releases and milestones
+## Tags
 
 Tags are named pointers to commits that are often used to mark releases,
 milestones, or stable snapshots. For documentation teams, tags are handy for
 marking documentation that matches a particular product release (e.g.,
 `v1.0.0-docs`).
 
-Create a lightweight tag:
+You can create two types of tags:
 
-```
-git tag v1.0.0-docs
-```
+- Lightweight
 
-Create an annotated tag (recommended for releases — includes a message and
-signing support):
+  ```shell
+  git tag v1.0.0-docs
+  ```
 
-```
-git tag -a v1.0.0-docs -m "Docs for v1.0.0 release"
-```
+- Annotated (recommended for releases — includes a message and signing support):
 
-Push a tag to the remote:
+  ```shell
+  git tag -a v1.0.0-docs -m "Docs for v1.0.0 release"
+  ```
 
-```
+After you create a tag, you can push it to the remote:
+
+```shell
 git push origin v1.0.0-docs
 ```
 
-Example: when you prepare a documentation release that matches a code release,
-tag the commit that corresponds to the published docs site. This makes it easy
-to check out the exact state later (for bug fixes or audits).
+You can check out a tag the same way you check out a branch:
 
-```
+```shell
 git checkout v1.0.0-docs
 ```
 
-## Reset — moving HEAD and changing history
+### Example
 
-`git reset` changes where `HEAD` points and can update the index (staging area)
-and working tree depending on the flags you use. It's primarily a local
-operation that modifies history or staging without creating new commits.
+When you prepare a documentation release that matches a code release,
+tag the commit that corresponds to the published docs site. This makes it easy
+to check out the exact state later (for bug fixes or audits).
 
-Three common modes:
+## Reset
+
+The reset option in Git allows you to:
+
+- Change where `HEAD` points
+- Update the index (staging area)
+- Update working tree
+
+The result of the operation depends on the selected options.
+
+Resetting is primarily a local operation that modifies history or staging without creating new commits.
+
+The reset feature has three common modes:
 
 - `git reset --soft <commit>`: move `HEAD` to `<commit>` but leave the index and
   working tree untouched. The changes from the moved commits become staged. Use
@@ -61,56 +72,45 @@ Three common modes:
   to `<commit>`. This throws away any uncommitted changes. Use with extreme
   caution.
 
-Example: you accidentally committed three small edits to `intro.md` as three
-separate commits but want to combine them into one. You can `reset` soft to the
+### Example
+
+You accidentally committed three small edits to `intro.md` as three
+separate commits but want to combine them into one. You can soft `reset` to the
 parent commit, which keeps the changes staged, then create a new single commit
 with a better message:
 
-```
+```shell
 git reset --soft HEAD~3
 git commit -m "docs(intro): tidy and combine edits"
 ```
 
-## Force push — rewriting remote history
-
-When you rewrite commits locally (for example after a rebase or reset) the local
-commit hashes no longer match the remote. Pushing these rewritten commits
-requires a force push. Use `--force-with-lease` to reduce risk:
-
-```
-git push --force-with-lease
-```
-
-Why `--force-with-lease`? It only force-pushes if the remote branch still has
-the last commit you expected — it refuses if someone else pushed meanwhile.
-
-Example: after you squash or tidy commits locally to improve history, you
-force-push the branch so the PR contains the cleaner sequence of commits. Warn
-reviewers before force-pushing a branch that others might have fetched.
-
-## Squash commits — `git rebase -i HEAD~n`
+## Squash commits
 
 Squashing combines multiple commits into one. Interactive rebase is the common
 tool for this:
 
-```
-git rebase -i HEAD~4
+```shell
+git rebase -i HEAD~n
 ```
 
-An editor opens showing the last 4 commits; you can mark commits as `pick`,
-`squash` (or `s`), or `fixup` to combine them. After editing, Git will replay
+The `n` parameter is the number of last commits that you want to squash.
+
+An editor opens showing the last `n` commits. You can mark commits as `pick`,
+`squash` (`s`), or `fixup` to combine them. After editing, Git will replay
 the commits and produce a new sequence with the selected squashes applied.
 
-Example: you have several small commits while drafting a new guide. Before
+### Example
+
+You have several small commits while drafting a new guide. Before
 opening a PR, you prefer a single tidy commit. Use interactive rebase to squash
 those drafts into one logical commit with a clear message, then
 `git push --force-with-lease` to update the branch.
 
-## Notes and cautions
+## Safety first
 
 - Rewriting history (reset, rebase, squash) is fine for local or private
-  branches but becomes dangerous on shared branches — avoid rewriting public
-  history others may base work on.
+  branches but becomes dangerous on shared branches. Avoid rewriting public
+  history others may base their work on.
 - Always prefer `--force-with-lease` over `--force` when updating a remote.
 - Keep tags for published documentation to make it easy to check out earlier
   site states.

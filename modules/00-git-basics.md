@@ -77,7 +77,7 @@ Other VCSes, like Subversion, store information as a list of file-based changes.
 
 Git stores data like a set of snapshots of a filesystem. In other words, every time you perform an operation, Git takes a picture of what all your files look like at the moment and stores a reference to that snapshot.
 
-![Diagram showing data storage as snaphots](img/snaphots.png)
+![Diagram showing data storage as snaphots](img/snapshots.png)
 
 ### Local operations
 
@@ -132,7 +132,7 @@ The basic workflow in Git looks like this:
 
 It's a repository hosted on the Internet or somewhere else. It's not a requirement of Git to have one central remote repository as the "source of truth" but a process choice. It's hard to collaborate with others without such a repository. Sure, you can share changes with others in a different way, for example by creating and sending patches, but it's not a scalable solution.
 With the advent of platforms like GitHub and Bitbucket, it became a convention to have a remote repository with which everyone synchronizes their changes by pulling and pushing them.
-These platforms offer additional features, such as pull requests, which are useful when you work on a project with others. It's important to know what is part of Git and what is an extra thing on top of it added by a platform.
+These platforms offer additional features, such as authentication, access control pull requests, which are useful when you work on a project with others. It's important to know what is part of Git and what is an extra thing on top of it added by a platform.
 
 ## Why technical writers should learn Git
 
