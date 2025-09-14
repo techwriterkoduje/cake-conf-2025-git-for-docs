@@ -22,21 +22,14 @@ can benefit from this workshop.
 
 ### Practical exercises
 
-- Cloning a repo
+- Creating a repo
 - Git config and the most important settings
 - Working with branches
 - Making changes: stage, commit, and push
 - Revert
 - Git history
 - Merge vs rebase
-- Create a PR
-  - All of this happens in GitHub
-  - Everyone has their own branch and PR
-  - In this workshop, you cannot merge until you receive an approval from the
-    repo owner
-  - Add comments, suggestions, and give approvals
-  - Cannot merge because the base branch is out of date - update your branch
-  - When all is well, merge!
+- Creating a PR
 
 ### Advanced concepts (theoretical)
 
