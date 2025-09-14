@@ -31,7 +31,7 @@ Useful things you can read from the log:
 Example: find when `style-guide.md` was last changed:
 
 ```
-git log --oneline -- get-your-hands-dirty/style-guide.md
+git log --oneline -- website/style-guide.md
 ```
 
 ## See the full commit
@@ -48,13 +48,13 @@ git show <commit-hash>
 useful if you want to ask a peer why they worded something a certain way:
 
 ```
-git blame get-your-hands-dirty/intro.md
+git blame website/intro.md
 ```
 
 Run it with `-L` to limit to a range of lines:
 
 ```
-git blame -L 1,40 get-your-hands-dirty/intro.md
+git blame -L 1,40 website/intro.md
 ```
 
 Note: `git blame` shows the last commit that touched each line; if lines were
@@ -84,17 +84,17 @@ git log -S"getting started" --oneline
 git log --oneline -n 20
 ```
 
-2. Find when `get-your-hands-dirty/style-guide.md` was last edited:
+2. Find when `website/style-guide.md` was last edited:
 
 ```
-git log --oneline -- get-your-hands-dirty/style-guide.md
+git log --oneline -- website/style-guide.md
 ```
 
 3. Inspect that commit with `git show <hash>` and read the commit message and
    diff.
 
-4. Run `git blame get-your-hands-dirty/intro.md` and identify the author of the
-   first heading. If you have questions, use the author information to start a
+4. Run `git blame website/intro.md` and identify the author of the first
+   heading. If you have questions, use the author information to start a
    friendly review comment.
 
 5. Use `git log -S"getting started" --oneline` to find commits that added or

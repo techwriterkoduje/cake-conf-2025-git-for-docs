@@ -47,7 +47,7 @@ You should see the change in the unstaged diff. Now stage and observe the status
 again:
 
 ```
-git add get-your-hands-dirty/intro.md
+git add website/intro.md
 git status
 git diff --staged
 ```
@@ -113,7 +113,7 @@ git status
 Stage the file and commit both changes together:
 
 ```
-git add get-your-hands-dirty/style-guide.md
+git add website/style-guide.md
 git status
 git commit -m "docs: add accessibility guidance and extra note"
 ```
