@@ -40,7 +40,6 @@ can benefit from this workshop.
   - Soft, mixed, hard
 - Force push
 - Squash
-  - `git config --global core.editor code --wait`
   - `git rebase -i HEAD~n`
 
 ## Hardware and software requirements
