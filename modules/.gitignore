@@ -1,0 +1,115 @@
+# Example .gitignore patterns and explanations
+
+# -------------------------
+# Basic filename patterns
+# -------------------------
+
+# Ignore a specific file in the same directory as this .gitignore
+notes.txt
+
+# Ignore all files with the .log extension anywhere
+*.log
+
+# Ignore any file with a trailing ~ (common editor backup)
+*~
+
+# -------------------------
+# Directories and paths
+# -------------------------
+
+# Ignore the tmp directory at the repository root
+/tmp/
+
+# Ignore any directory named build anywhere in the tree
+build/
+
+# Ignore a file at a specific path
+docs/drafts/draft-ideas.md
+
+# Ignore all files in any logs directory (one level)
+logs/*
+
+# Ignore nested matches using double-star
+# Ignore any directory named temp at any depth
+**/temp/
+
+# Ignore a specific file in all subdirectories (debug.log anywhere)
+**/debug.log
+
+# -------------------------
+# Wildcards and character classes
+# -------------------------
+
+# ? matches a single character
+file?.md    
+# matches file1.md, fileA.md but not file10.md
+
+# [abc] matches any one of the listed characters
+release-[12].txt   
+# matches release-1.txt and release-2.txt
+
+# [a-z] character ranges also work
+# -------------------------
+
+# -------------------------
+# Negation (un-ignore)
+# -------------------------
+
+# Ignore everything in build/, but keep build/keep.me
+build/
+!build/keep.me
+
+# If you ignored a directory, you must re-allow the file and its parents
+node_modules/
+!node_modules/special-package/
+
+# -------------------------
+# Leading slash and repository root
+# -------------------------
+
+# A leading slash makes the pattern relative to the repository root
+# (useful in a project-level .gitignore)
+/config/settings.local
+
+# Without a leading slash the pattern matches in any directory
+settings.local
+
+# -------------------------
+# Trailing slash means directory
+# -------------------------
+
+# Trailing slash explicitly matches directories
+cache/         # ignore the cache directory and its contents
+
+# -------------------------
+# Ignore common OS/editor files (useful defaults)
+# -------------------------
+
+# macOS
+.DS_Store
+
+# Windows thumbnail cache
+Thumbs.db
+
+# -------------------------
+# Edge cases and escaping
+# -------------------------
+
+# To ignore a file with a leading #, escape it with a backslash
+\#notes.md
+
+# To ignore a file that starts with a literal !, escape it
+\!important.txt
+
+# You can include comments using # at line start or after space
+# This is a comment
+
+# -------------------------
+# Practical tips
+# -------------------------
+
+# 1) Use `git status --ignored` to review which files are ignored.
+# 2) If a file is already tracked by Git, adding it to .gitignore won't stop
+#    tracking — you must `git rm --cached <file>` to untrack it.
+# 3) Keep repository-level ignores (root .gitignore) for project-wide rules
+#    and use per-directory .gitignore files for local conventions.
