@@ -59,9 +59,9 @@ For example:
 git clone git@github.com:my-username/my-repo.git
 ```
 
-Cloning copies the remote repository to your machine and creates a link to the `origin`
-remote. `git clone` also checks out the repository's default branch (often
-`main`).
+Cloning copies the remote repository to your machine and creates a link to the
+`origin` remote. `git clone` also checks out the repository's default branch
+(often `main`).
 
 ### Get the remote URL
 
@@ -107,8 +107,7 @@ git remote -v
 git branch --show-current
 ```
 
-Expected: `origin` is listed and the default branch (`main`) is checked
-out.
+Expected: `origin` is listed and the default branch (`main`) is checked out.
 
 ## Troubleshooting
 

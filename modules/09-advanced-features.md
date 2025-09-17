@@ -40,9 +40,9 @@ git checkout v1.0.0-docs
 
 ### Example
 
-When you prepare a documentation release that matches a code release,
-tag the commit that corresponds to the published docs site. This makes it easy
-to check out the exact state later (for bug fixes or audits).
+When you prepare a documentation release that matches a code release, tag the
+commit that corresponds to the published docs site. This makes it easy to check
+out the exact state later (for bug fixes or audits).
 
 ## Reset
 
@@ -54,7 +54,8 @@ The reset option in Git allows you to:
 
 The result of the operation depends on the selected options.
 
-Resetting is primarily a local operation that modifies history or staging without creating new commits.
+Resetting is primarily a local operation that modifies history or staging
+without creating new commits.
 
 The reset feature has three common modes:
 
@@ -74,10 +75,10 @@ The reset feature has three common modes:
 
 ### Example
 
-You accidentally committed three small edits to `intro.md` as three
-separate commits but want to combine them into one. You can soft `reset` to the
-parent commit, which keeps the changes staged, then create a new single commit
-with a better message:
+You accidentally committed three small edits to `intro.md` as three separate
+commits but want to combine them into one. You can soft `reset` to the parent
+commit, which keeps the changes staged, then create a new single commit with a
+better message:
 
 ```shell
 git reset --soft HEAD~3
@@ -96,15 +97,15 @@ git rebase -i HEAD~n
 The `n` parameter is the number of last commits that you want to squash.
 
 An editor opens showing the last `n` commits. You can mark commits as `pick`,
-`squash` (`s`), or `fixup` to combine them. After editing, Git will replay
-the commits and produce a new sequence with the selected squashes applied.
+`squash` (`s`), or `fixup` to combine them. After editing, Git will replay the
+commits and produce a new sequence with the selected squashes applied.
 
 ### Example
 
-You have several small commits while drafting a new guide. Before
-opening a PR, you prefer a single tidy commit. Use interactive rebase to squash
-those drafts into one logical commit with a clear message, then
-`git push --force-with-lease` to update the branch.
+You have several small commits while drafting a new guide. Before opening a PR,
+you prefer a single tidy commit. Use interactive rebase to squash those drafts
+into one logical commit with a clear message, then `git push --force-with-lease`
+to update the branch.
 
 ## Safety first
 

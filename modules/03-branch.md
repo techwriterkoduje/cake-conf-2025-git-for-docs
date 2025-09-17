@@ -113,9 +113,9 @@ Bad examples:
 
 ## Exercise
 
-1. Before you create a new branch, make sure your local copy is up to date with the
-   remote. This avoids creating branches from an out-of-date base and reduces merge
-   headaches later:
+1. Before you create a new branch, make sure your local copy is up to date with
+   the remote. This avoids creating branches from an out-of-date base and
+   reduces merge headaches later:
 
    ```shell
    git checkout main

@@ -4,24 +4,29 @@ Sometimes you need to remove unwanted files or undo mistakes.
 
 ## Remove untracked files
 
-Your repository may contain files that are temporary and should not be tracked by Git, for example, notes, generated output, or
-forgotten build artifacts.
-You can use the `git clean` command to remove such files.
+Your repository may contain files that are temporary and should not be tracked
+by Git, for example, notes, generated output, or forgotten build artifacts. You
+can use the `git clean` command to remove such files.
 
-> WARNING: This operation deletes files from your hard drive. To avoid any surprises, always preview what will be removed by running (`git clean -n`)
+> WARNING: This operation deletes files from your hard drive. To avoid any
+> surprises, always preview what will be removed by running (`git clean -n`)
 
 ## Undo uncommitted changes to a single file
 
-If you edited a file but you didn't commit it, you can undo your changes using the `git restore` (more modern) or `git checkout` commands.
+If you edited a file but you didn't commit it, you can undo your changes using
+the `git restore` (more modern) or `git checkout` commands.
 
-This operation replaces your working copy with the last committed version. It affects only the working tree — nothing is changed in the commit history.
+This operation replaces your working copy with the last committed version. It
+affects only the working tree — nothing is changed in the commit history.
 
-> WARNING: After you discard uncommitted changes, you cannot recover them unless you have local backups or the reflog contains the state.
+> WARNING: After you discard uncommitted changes, you cannot recover them unless
+> you have local backups or the reflog contains the state.
 
 ## Undo committed changes
 
-Git offers several ways to undo changes that were already committed. One of them is the `git revert` command.
-It a safe option because it doesn't rewrite the history. Instead, it undoes the specified commit by applying a new commit.
+Git offers several ways to undo changes that were already committed. One of them
+is the `git revert` command. It a safe option because it doesn't rewrite the
+history. Instead, it undoes the specified commit by applying a new commit.
 
 ## Exercises
 
@@ -49,7 +54,8 @@ It a safe option because it doesn't rewrite the history. Instead, it undoes the 
    git clean -f
    ```
 
-   > TIP: To remove untracked directories (useful for build outputs), run `git clean -fd`
+   > TIP: To remove untracked directories (useful for build outputs), run
+   > `git clean -fd`
 
 6. Check the status:
 
@@ -124,7 +130,9 @@ It a safe option because it doesn't rewrite the history. Instead, it undoes the 
    git revert <commitId>
    ```
 
-   > IMPORTANT: Remember to specify the ID of the commit that you want to undo - not the stable commit that you want to return to. In other words, you tell Git "Remove these changes", not "Restore this version".
+   > IMPORTANT: Remember to specify the ID of the commit that you want to undo -
+   > not the stable commit that you want to return to. In other words, you tell
+   > Git "Remove these changes", not "Restore this version".
 
 8. Ensure the new commit was added to the history:
 

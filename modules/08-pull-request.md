@@ -2,22 +2,26 @@
 
 This module uses GitHub to demonstrate Pull Requests (PRs). PRs are not a
 feature of Git itself but of repository hosting platforms (GitHub, GitLab,
-Bitbucket). In short, a PR is a request to merge changes from one branch into another.
+Bitbucket). In short, a PR is a request to merge changes from one branch into
+another.
 
 ## Why PRs help writers
 
 ### Reviewing and approving
 
 - A PR offers a web UI with useful features.
-- Reviewers can read the exact changes and suggest edits by adding inline comments. They don't have to edit the file directly.
+- Reviewers can read the exact changes and suggest edits by adding inline
+  comments. They don't have to edit the file directly.
 - The **Add a suggestion** feature lets reviewers propose an exact edit that the
   author can accept with one click.
-- You can configure default reviewers that are notified automatically every time you create a PR.
+- You can configure default reviewers that are notified automatically every time
+  you create a PR.
 - A PR acts as a gate for automated checks (CI) and human approvals
 
 ### Tracking
 
-- A PR adds another layer of history tracking on top of the commit history in Git.
+- A PR adds another layer of history tracking on top of the commit history in
+  Git.
 - A PR acts as a discussion thread
 - The PR timeline records decisions (who approved what, what changed) which is
   valuable for audits and handovers.
@@ -30,7 +34,8 @@ example `<yourName>/docs/add-examples`).
 ### 1. Create a PR
 
 1. On GitHub, go to the repository page.
-2. If you see a banner to compare & pull request for your recently pushed branch, click it.
+2. If you see a banner to compare & pull request for your recently pushed
+   branch, click it.
 3. If you don't see the banner:
 
    1. Click **Pull requests** → **New pull request**
@@ -47,16 +52,15 @@ The repo owner (instructor) follows these steps:
 1. In the PR UI, go to the tab showing changed files.
 2. Add a comment on a line in a file.
 3. Explain why you need this change.
-4. Use the **Add a suggestion** feature to propose
-   an exact edit (GitHub provides a small editor that modifies the file in the
-   suggestion).
+4. Use the **Add a suggestion** feature to propose an exact edit (GitHub
+   provides a small editor that modifies the file in the suggestion).
 5. Submit the comment.
 
 ### 3. Accept a suggestion and update your local repository
 
-1. In the PR UI, accept the suggested change by clicking the **Apply suggestion**
-   button. After you accept it, GitHub will add a new commit to the PR branch
-   that applies the change.
+1. In the PR UI, accept the suggested change by clicking the **Apply
+   suggestion** button. After you accept it, GitHub will add a new commit to the
+   PR branch that applies the change.
 2. Update your local branch with changes from the remote branch on GitHub:
 
    ```shell
@@ -82,8 +86,8 @@ The repo owner (instructor) follows these steps:
 
 ### 4. Add a comment
 
-Some comments are not simple suggestions and require manual edits
-The repo owner (instructor) follows these steps:
+Some comments are not simple suggestions and require manual edits The repo owner
+(instructor) follows these steps:
 
 1. Add a comment on a different line asking the author to reword a sentence.
    Don't use the **Add a suggestion** feature.
@@ -118,10 +122,13 @@ The repo owner (instructor) reviews and approves the PR on GitHub.
 
 After the PR is approved and checks pass:
 
-1. From the menu in the **Merge pull request** button pick the option that matches your workflow:
+1. From the menu in the **Merge pull request** button pick the option that
+   matches your workflow:
    - **Create a merge commit** - preserves the history
-   - **Squash and merge** - rewrites the history by combining commits into one commit
-   - **Rebase and merge** - rewrites the history by creating a linear timeline of commit
+   - **Squash and merge** - rewrites the history by combining commits into one
+     commit
+   - **Rebase and merge** - rewrites the history by creating a linear timeline
+     of commit
 2. Click **Merge pull request**.
 
 ### 8. Update `main` in the local repository
@@ -139,8 +146,8 @@ After the PR is approved and checks pass:
 
 ### Conflicts prevent merge
 
-GitHub will show a message and block merging if there are conflicts with the base branch.
-To fix the issue:
+GitHub will show a message and block merging if there are conflicts with the
+base branch. To fix the issue:
 
 1. Pull changes to your local the branch.
 2. Resolve conflicts.
@@ -148,9 +155,11 @@ To fix the issue:
 
 ### Commit with a suggestion not pulled to the local repository
 
-If the `git pull` operation didn't fetch the PR commit after you accepted a suggestion:
+If the `git pull` operation didn't fetch the PR commit after you accepted a
+suggestion:
 
-1. Ensure you pulled the PR branch (`git pull origin <yourName>/docs/add-examples`)
+1. Ensure you pulled the PR branch
+   (`git pull origin <yourName>/docs/add-examples`)
 2. Ensure your local branch is tracking the correct remote branch.
 
 ### Someone else merged or force-pushed the branch

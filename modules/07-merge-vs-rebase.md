@@ -5,9 +5,9 @@ When you bring changes from one branch into another you have two options:
 1. Merge
 2. Rebase
 
-Both integrate commits from one branch into another, but they
-do so differently. It's important to understand the trade offs so you can pick
-the right approach for your team.
+Both integrate commits from one branch into another, but they do so differently.
+It's important to understand the trade offs so you can pick the right approach
+for your team.
 
 ## Merge (preserves history)
 
@@ -34,7 +34,8 @@ contain the same changes but with different parents.
 If there are conflicts, Git will stop and ask you to resolve them. After fixing
 conflicts, you `git add` the files and `git rebase --continue`.
 
-Rebase rewrites history. If you already pushed your branch, you'll need to force-push the rewritten commits.
+Rebase rewrites history. If you already pushed your branch, you'll need to
+force-push the rewritten commits.
 
 When to use rebase:
 
@@ -51,7 +52,9 @@ Downside:
 
 - Communicate with teammates before rebasing or force-pushing a branch that
   others may have pulled.
-- Use `--force-with-lease` instead of `--force` when possible. It prevents you from accidentally destroying your teammate's work. If someone else pushed changes while you were working, the rebase operation will fail.
+- Use `--force-with-lease` instead of `--force` when possible. It prevents you
+  from accidentally destroying your teammate's work. If someone else pushed
+  changes while you were working, the rebase operation will fail.
 
 ## Default pull strategy
 
@@ -60,7 +63,8 @@ Downside:
 1. `git fetch`
 2. `git merge` (merging the remote branch into your current branch)
 
-Some teams prefer rebase over merge when they pull changes. Use the `--rebase` flag for that:
+Some teams prefer rebase over merge when they pull changes. Use the `--rebase`
+flag for that:
 
 ```shell
 git pull --rebase
@@ -82,8 +86,8 @@ git config --global pull.rebase true
 
 ## Exercises
 
-The instructor will update the `main` branch. Fetch the update and integrate it into your
-branch. Try both merge and rebase to observe differences.
+The instructor will update the `main` branch. Fetch the update and integrate it
+into your branch. Try both merge and rebase to observe differences.
 
 ### Try merge
 
@@ -105,7 +109,9 @@ branch. Try both merge and rebase to observe differences.
    git log --oneline --graph --decorate -n 20
    ```
 
-   Expected: A merge commit is listed in the repository history at the point of time when the instructor made the change. Your original commits remain unchanged.
+   Expected: A merge commit is listed in the repository history at the point of
+   time when the instructor made the change. Your original commits remain
+   unchanged.
 
 ### Try rebase
 
@@ -135,4 +141,5 @@ The rebase method rewrites local commits; requires force-push if already pushed.
    git log --oneline --graph --decorate -n 20
    ```
 
-   Expected: The repository's history changed. The update made by the instructor is listed before your updates.
+   Expected: The repository's history changed. The update made by the instructor
+   is listed before your updates.
