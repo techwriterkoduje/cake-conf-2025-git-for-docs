@@ -1,8 +1,8 @@
 # Creating a repo
 
-To work on a Git repo, you need to have it on your machine — that's technically
-all you need. The most basic scenario is just you working on a repo on your
-machine alone.
+To work on a Git repo, you must have it on your machine. Technically, that's all
+you need. The most basic scenario is just you working on a repo on your machine
+alone.
 
 ## Option 1: Initialize
 
@@ -38,19 +38,19 @@ git push -u origin main
 We won't go into committing details now; this is just background. High-level
 steps:
 
-1. Initialize the repo with `git init`
-2. Add a file
-3. Commit the file
-4. Set the branch name
-5. Add the remote (`origin`)
-6. Push to the origin
+1. Initialize the repo with `git init`.
+2. Add a file.
+3. Commit the file.
+4. Set the branch name.
+5. Add the remote (`origin`).
+6. Push to the origin.
 
 ## Option 2: Clone
 
 To clone an existing repo, run:
 
 ```shell
-git clone <REMOTE_URL>
+git clone <remoteUrl>
 ```
 
 For example:
@@ -76,18 +76,12 @@ On GitHub, open the repo page and click the green **Code** button. Choose
 For this workshop, we choose SSH because it's convenient. You would choose HTTPS
 if you preferred not to deal with SSH keys for now.
 
-For this workshop, you can run:
-
-```shell
-git clone git@github.com:techwriterkoduje/cake-conf-2025-git-for-docs.git
-```
-
 ### Verify your clone
 
 After cloning (or after `git init` + `git remote add`), run these quick checks:
 
 ```shell
-cd cake-conf-2025-git-for-docs
+cd <localRepoPath>
 git remote -v
 git branch --show-current
 git status
@@ -98,16 +92,21 @@ You should see `origin` listed under `git remote -v` and a branch name (often
 
 ## Exercise
 
-Clone the workshop repo and verify remotes and branch:
+1. Clone the workshop repo:
 
-```shell
-git clone git@github.com:techwriterkoduje/cake-conf-2025-git-for-docs.git
-cd cake-conf-2025-git-for-docs
-git remote -v
-git branch --show-current
-```
+   ```shell
+   git clone git@github.com:techwriterkoduje/cake-conf-2025-git-for-docs.git
+   ```
 
-Expected: `origin` is listed and the default branch (`main`) is checked out.
+2. Verify remotes and branch:
+
+   ```shell
+   cd cake-conf-2025-git-for-docs
+   git remote -v
+   git branch --show-current
+   ```
+
+   Expected: `origin` is listed and the default branch (`main`) is checked out.
 
 ## Troubleshooting
 

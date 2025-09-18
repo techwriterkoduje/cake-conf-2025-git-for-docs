@@ -23,13 +23,13 @@ Generally, using a VCS means that if something goes wrong, you can recover.
 
 Here's a brief history of version control systems that will allow you to
 understand how Git is different from other tools of this type. Images in this
-section comes from the "Ry's Git Tutorial" book.
+section come from the "Ry's Git Tutorial" book.
 
 #### The "final" solution (aka files and folders)
 
 Before a VCS was invented, the only way to track versions of a project was to
 create a copy and give it a new name. Just think how many times you saved a file
-or folder whose name contained the "final" word :) This solution was very prone
+or folder whose name contained the word "final" 😉 This solution was very prone
 to errors, such as overwriting the wrong file or mislabelling a folder.
 
 ![Diagram showing controlling versions of a project using files and folders](img/files-and-folders.png)
@@ -52,9 +52,9 @@ on a server. You check out files and then save them back into the project over
 network. This solution allows you to collaborate on a project with others
 through a single point of entry. To solve the issue of creating conflicting
 changes at the same time, a CVCS prevents you from overriding others' work (file
-checkout, file lock). A CVCS has another downside - it has a single point of
-failure. If the server goes down or becomes corrupted, you can't do your work or
-even lose the entire data. An example of a CVCS is Subversion.
+checkout, file lock). A CVCS has one more downside - it has a single point of
+failure. If the server goes down or becomes corrupted, you can't do your work.
+Even worse, you can lose the entire data. An example of a CVCS is Subversion.
 
 ![Diagram showing controlling versions of a project using a centralized VCS](img/centralized-vcs.png)
 
@@ -64,9 +64,9 @@ A distributed VCS solves the issue of collaboration in a larger group. Instead
 of checking out the latest snapshot of the files, you have your own local copy
 of the entire project. It allows you to work independently and put off merging
 conflicts until your convenience. A DVCS is also much faster because you don't
-have perform actions over a network. Also, the risk of losing data is much lower
-compared to a CVCS because every user has a complete copy of the entire project.
-An example of a DVCS is Git.
+have to perform actions over a network. Also, the risk of losing data is much
+lower compared to a CVCS because every user has a complete copy of the entire
+project. An example of a DVCS is Git.
 
 ![Diagram showing controlling versions of a project using a distributed VCS](img/distributed-vcs.png)
 
@@ -74,11 +74,12 @@ An example of a DVCS is Git.
 
 It's a free and open-source DVCS, which propels most of the software development
 industry. When the Linux community lost their free license for BitKeeper
-(commercial DVCS) in 2005, they decided to develop their own system. That's an
-extremely short history of Git. This tool was built with speed, simple design
-and support for non-linear development in mind. It has some unique features that
-make it different from other tools of this type. Images in this section comes
-from the "Pro Git" book.
+(commercial DVCS) in 2005, they decided to develop their own system.
+
+This tool was built with speed, simple design and support for non-linear
+development in mind. It has some unique features that make it different from
+other tools of this type. Images in this section come from the "Pro Git" book
+and the official Git documentation.
 
 ### Snapshots
 
@@ -106,7 +107,7 @@ or connection to a network. It has two major advantages:
 ### Checksum
 
 To ensure integrity of changes, Git checksums everything before storing it. This
-way,no changes can go under Git's radar. The mechanism used for this
+way, no changes can go under Git's radar. The mechanism used for this
 checksumming is the SHA-1 hash:
 
 - String composed of 40 hexadecimal characters (0-9 and a-f)
@@ -121,37 +122,41 @@ Example:
 Checksumming is an important concept because Git stores everything in its
 database not by filename but by the hash value of its contents.
 
-### Three states
+### States
 
-There are actually four states, but only three of them are in Git. In a Git
-repository, a file can be:
+In a Git repository, a file can be in one of the following states:
 
-1. `untracked` - Git doesn't track changes for this file
-2. `modified` - the file was changed but not staged or committed
-3. `staged` - the file was changed and its current version was marked to go into
-   your next commit.
-4. `committed` - the file was changed and stored in your local database
+1. `untracked` - Git doesn't record changes for this file
+2. `unmodified` - the file wasn't changed
+3. `modified` - the file was changed but wasn't staged
+4. `staged` - the file was changed and its current version was marked to go into
+   the next commit
+
+![Diagram showing file states](img/file-states.png)
 
 These states are related to three main sections of a Git project:
 
-1. **Working directory** - a single checkout of one version of the project.
+1. **The `.git` directory (repository)** - it contains metadata and object
+   database for your project. It's the most important part of Git. It's copied
+   when you clone a repository.
+2. **Working directory** - a single checkout of one version of the project.
    These files are pulled out of the compressed database in the Git directory
    and placed on your hard disk.
-2. **Staging area** - a file in your Git directory that stores information about
-   what will go into your next commit
-3. **The `.git` directory (repository)** - it contains metadata and object
-   database for your project. It's the most important part of Git and it is what
-   is copied when you clone a repository.
+3. **Staging area** - a file in your Git directory that stores information about
+   what will go into the next commit
 
 ![Diagram showing three sections of a Git project](img/git-project-sections.png)
 
 The basic workflow in Git looks like this:
 
-1. You create a new file (`untracked`) and then add it to the Git project.
-2. You change the file in your working directory (`modified`).
-3. You stage the file by adding its snapshot to the staging area (`staged`).
-4. You commit your changes, which moves the file snapshot from the staging area
-   to the Git directory (`committed`)
+1. You create a new file. File state: `untracked`.
+2. You add it to the Git project. File state: `staged`.
+3. You commit the new file. File state: `unmodified`.
+4. You change the file in your working directory. File state: `modified`.
+5. You stage the file by adding its snapshot to the staging area: File state:
+   `staged`.
+6. You commit your changes (the file snapshot is moved from the staging area to
+   the Git directory). File state: `unmodified`.
 
 ### Remote repository
 
@@ -169,19 +174,37 @@ extra thing on top of it added by a platform.
 
 ## Why technical writers should learn Git
 
-- It's an industry standard. Many companies use Git for code and documentation.
-  Learning Git makes you more effective and more hireable.
-- Transferable skill. Git skills apply across roles and projects —
-  documentation, content design, product specs, and beyond.
-- Works with plain-text formats. Git works best with text files (Markdown,
-  reStructuredText), which are commonly used in the docs as code model
-- Clear history. Every commit tells you who changed what and why. That makes it
-  easier to understand the evolution of a document and to write changelogs.
-- Better reviews and traceability. You can track who changed what and understand
-  the rationale behind edits.
-- Reproducibility and publishing. Docs in Git can be tied to the software
-  release that they describe, and they can be published automatically by
-  continuous integration systems.
-- Safe experimentation: Use branches to try different ways of phrasing or
-  structuring content. If one approach doesn't work, you can switch back easily.
-  If a revision introduces errors, you can restore a previous version quickly.
+### Industry standard
+
+Many companies use Git for code and documentation. Learning Git makes you more
+effective and more hireable.
+
+### Transferable skill
+
+Git skills apply across roles and projects documentation, content design,
+product specs, and beyond.
+
+### Great for plain-text formats
+
+Git works best with text files (Markdown, reStructuredText), which are commonly
+used in the docs as code model.
+
+### Clear history
+
+Every commit tells you who changed what and why. That makes it easier to
+understand the evolution of a document and to write changelogs.
+
+### Better reviews and traceability
+
+You can track who changed what and understand the rationale behind edits.
+
+### Reproducibility and publishing
+
+Docs in Git can be tied to the software release that they describe, and they can
+be published automatically by continuous integration systems.
+
+### Safe experimentation
+
+You can use branches to try different ways of phrasing or structuring content.
+If one approach doesn't work, you can switch back easily. If a revision
+introduces errors, you can restore a previous version quickly.
