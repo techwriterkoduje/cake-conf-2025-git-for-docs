@@ -3,7 +3,7 @@
 Git stores several pieces of personal and behavior information in a
 configuration file.
 
-This module shows how to configure basic settings for your day-to-day work
+This module shows how to configure basic settings for your day-to-day work.
 
 ## Where config lives
 

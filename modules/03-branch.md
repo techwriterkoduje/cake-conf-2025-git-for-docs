@@ -152,6 +152,6 @@ Bad examples:
 
    ```shell
    git switch main
-   git branch -d feature/try-branch
-   git push origin --delete feature/try-branch
+   git branch -d feature/<yourBranchName>
+   git push origin --delete feature/<yourBranchName>
    ```
