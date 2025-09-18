@@ -1,4 +1,4 @@
-# Branches
+# Working with branches
 
 Branches are lightweight pointers to commits — they let you work on features,
 fixes, or experiments without touching the shared history.
@@ -8,17 +8,6 @@ mainline stable, and collaborate safely. For example, if you're adding a new
 getting-started guide, you might create `docs/add-getting-started` and write and
 test your changes there until the content is ready to merge. Meanwhile, others
 can continue fixing code or other docs on `main`.
-
-Before you create a new branch, make sure your local copy is up to date with the
-remote. This avoids creating branches from an out-of-date base and reduces merge
-headaches later:
-
-```
-git checkout main
-git pull
-```
-
-Replace `main` with whatever your repository's default branch is.
 
 ## Branch naming conventions
 
@@ -44,117 +33,125 @@ Bad examples:
 - `WIP` (not descriptive)
 - `feature/Johns-new-feature` (contains personal name and caps)
 
-## Create a branch
+## Basic commands
 
-Create and switch to a new branch in one command:
+- Create and switch to a new branch in one command:
 
-```
-git switch -c feature/add-search
-```
+  ```shell
+  git switch -c <yourBranchName>
+  ```
 
-Older Git versions use `git checkout -b` for the same effect.
+  or
 
-## List branches
+  ```shell
+  git checkout -b <yourBranchName>
+  ```
 
-List local branches:
+- List local branches:
 
-```
-git branch
-```
+  ```shell
+  git branch
+  ```
 
-List remote branches:
+  List remote branches:
 
-```
-git branch -r
-```
+  ```shell
+  git branch -r
+  ```
 
-List all branches (local + remote):
+  List all branches (local + remote):
 
-```
-git branch -a
-```
+  ```shell
+  git branch -a
+  ```
 
-## Switch between branches
+- Switch to an existing local branch:
 
-Switch to an existing local branch:
+  ```shell
+  git switch <yourBranchName>
+  ```
 
-```
-git switch feature/add-search
-```
+  or
 
-If the branch only exists on the remote, fetch first and then check it out:
+  ```shell
+  git checkout <yourBranchName>
+  ```
 
-```
-git fetch
-git switch -c feature/add-search origin/feature/add-search
-```
+  If the branch only exists on the remote, fetch first and then check it out:
 
-## Publish a branch
+  ```shell
+  git fetch
+  git switch -c <yourBranchName> origin/<yourBranchName>
+  ```
 
-To push your new branch to the remote and set the upstream tracking, run:
+- Push your local branch to the remote and set the upstream tracking:
 
-```
-git push --set-upstream origin feature/add-search
-```
+  ```shell
+  git push --set-upstream origin <yourBranchName>
+  ```
 
-After this, `git push` and `git pull` will default to the remote/branch you
-created.
+  After this, `git push` and `git pull` will default to the remote branch you
+  created.
 
-## Verify and tidy up
+- Delete a local branch:
 
-Check remote branches:
+  ```shell
+  git branch -d <yourBranchName>
+  ```
 
-```
-git fetch
-git branch -r
-```
+- Force-delete a local branch (if it contains unmerged changes):
 
-Delete a local branch when you no longer need it:
+  ```shell
+  git branch -D <yourBranchName>
+  ```
 
-```
-git branch -d feature/add-search
-```
+- Delete a remote branch:
 
-Force-delete if it hasn't been merged:
+  ```shell
+  git push origin --delete <yourBranchName>
+  ```
 
-```
-git branch -D feature/add-search
-```
+## Exercise
 
-Delete the remote branch:
+1. Before you create a new branch, make sure your local copy is up to date with
+   the remote. This avoids creating branches from an out-of-date base and
+   reduces merge headaches later:
 
-```
-git push origin --delete feature/add-search
-```
+   ```shell
+   git checkout main
+   git pull
+   ```
 
-## Exercise (try it)
+2. Create a feature branch:
 
-1. Ensure you're up to date:
+   ```shell
+   git switch -c feature/<yourBranchName>
+   ```
 
-```
-git checkout main
-git pull
-```
+   or
 
-2. Create a feature branch and list branches:
+   ```shell
+   git checkout -b feature/<yourBranchName>
+   ```
 
-```
-git switch -c feature/try-branch
-git branch
-```
+3. List all local branches to verify your branch was created:
 
-3. Publish it:
+   ```shell
+   git branch
+   ```
 
-```
-git push --set-upstream origin feature/try-branch
-```
+   Expected: The branch named `feature/<yourBranchName>` is listed.
 
-4. Clean up (optional):
+4. Publish your local branch as a remote branch:
 
-```
-git switch main
-git branch -d feature/try-branch
-git push origin --delete feature/try-branch
-```
+   ```shell
+   git push --set-upstream origin feature/<yourBranchName>
+   ```
 
-Expected: the branch appears locally and on the remote until it's deleted.
+5. Delete the branch.
+
+   ```shell
+   git switch main
+   git branch -d feature/try-branch
+   git push origin --delete feature/try-branch
+   ```

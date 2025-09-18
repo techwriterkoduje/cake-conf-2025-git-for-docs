@@ -1,26 +1,19 @@
 # Merge vs Rebase
 
-When you bring changes from one branch into another you have two common options:
-merge or rebase. Both integrate commits from one branch into another, but they
-do so differently. It's important to understand the trade offs so you can pick
-the right approach for your team.
+When you bring changes from one branch into another you have two options:
+
+1. Merge
+2. Rebase
+
+Both integrate commits from one branch into another, but they do so differently.
+It's important to understand the trade offs so you can pick the right approach
+for your team.
 
 ## Merge (preserves history)
 
 Merging creates a new "merge commit" that ties two lines of history together. It
 preserves the exact commits as they happened and makes the branching structure
 explicit in history.
-
-Example: merge `main` into your feature branch to pick up recent changes:
-
-```
-git checkout feature/docs-update
-git fetch
-git merge origin/main
-```
-
-This creates a merge commit with a default message like "Merge branch 'main'
-into feature/docs-update". You keep all original commits unchanged.
 
 When to use merge:
 
@@ -38,26 +31,11 @@ Rebasing moves your commits on top of another base commit, producing a linear
 history. It rewrites the commit hashes because it creates new commits that
 contain the same changes but with different parents.
 
-Example: rebase your feature branch on top of the latest `main`:
-
-```
-git checkout feature/docs-update
-git fetch
-git rebase origin/main
-```
-
 If there are conflicts, Git will stop and ask you to resolve them. After fixing
 conflicts, you `git add` the files and `git rebase --continue`.
 
-Because rebase rewrites history, if you've already pushed your branch you'll
-need to force-push the rewritten commits:
-
-```
-git push --force-with-lease
-```
-
-Use `--force-with-lease` instead of `--force` when possible — it is safer and
-fails if someone else has pushed new commits to the remote branch.
+Rebase rewrites history. If you already pushed your branch, you'll need to
+force-push the rewritten commits.
 
 When to use rebase:
 
@@ -70,88 +48,98 @@ Downside:
 - Rewriting public history can break other developers' work if they built on the
   previous commits.
 
+### Safety first
+
+- Communicate with teammates before rebasing or force-pushing a branch that
+  others may have pulled.
+- Use `--force-with-lease` instead of `--force` when possible. It prevents you
+  from accidentally destroying your teammate's work. If someone else pushed
+  changes while you were working, the rebase operation will fail.
+
 ## Default pull strategy
 
-`git pull` is a convenience command that by default runs `git fetch` followed by
-`git merge` (merging the remote branch into your current branch). Some teams
-prefer rebasing on pull:
+`git pull` is a convenience command that by default runs:
 
-```
+1. `git fetch`
+2. `git merge` (merging the remote branch into your current branch)
+
+Some teams prefer rebase over merge when they pull changes. Use the `--rebase`
+flag for that:
+
+```shell
 git pull --rebase
 ```
 
-Or set it globally for your repository:
+This flag makes `git pull` run:
 
-```
+1. `git fetch`
+2. `git rebase` (rewriting your branch's history)
+
+If you always want to rebase on pull, change the default strategy:
+
+```shell
 git config --global pull.rebase true
 ```
 
-This makes `git pull` run `git fetch` + `git rebase` instead of `merge`.
+> **Note**: switching the default pull behavior has team-wide implications.
+> Discuss it with your collaborators.
 
-**Note**: switching the default pull behavior has team-wide implications.
-Discuss it with your collaborators.
+## Exercises
 
-## Examples for writers
-
-Scenario: you are updating `getting-started.md` in `feature/docs-update`. The
-team has been committing bug fixes to `main` while you worked.
-
-- Merge approach: `git fetch` + `git merge origin/main` — keep your commits as
-  they are and create one merge commit. History shows the merge point.
-- Rebase approach: `git fetch` + `git rebase origin/main` — replay your commits
-  on top of `main` for a linear history; then `git push --force-with-lease`.
-
-If others also work on your branch, prefer merging to avoid rewriting shared
-history.
-
-## Exercise (try it)
-
-The instructor will update `main`. Fetch the update and integrate it into your
-branch. Two options below — try both to observe differences.
+The instructor will update the `main` branch. Fetch the update and integrate it
+into your branch. Try both merge and rebase to observe differences.
 
 ### Try merge
 
-The merge method is safe for shared branches.
+1. Update your repository.
 
-```
-git fetch
-git merge origin/main
-```
+   ```shell
+   git fetch
+   ```
 
-This creates a merge commit on your branch. Inspect the graph:
+2. Merge the update into your branch.
 
-```
-git log --oneline --graph --decorate -n 20
-```
+   ```shell
+   git merge origin/main
+   ```
+
+3. Inspect the history:
+
+   ```shell
+   git log --oneline --graph --decorate -n 20
+   ```
+
+   Expected: A merge commit is listed in the repository history at the point of
+   time when the instructor made the change. Your original commits remain
+   unchanged.
 
 ### Try rebase
 
 The rebase method rewrites local commits; requires force-push if already pushed.
 
-```
-git fetch
-git rebase origin/main
-```
+1. Update your repository.
 
-If rebase completes, push the rewritten commits to the remote with:
+   ```shell
+   git fetch
+   ```
 
-```
-git push --force-with-lease
-```
+2. Rebase `main` onto your branch.
 
-### Compare results
+   ```shell
+   git rebase origin/main
+   ```
 
-Compare histories after each approach with:
+3. If the rebase operation completes, push the rewritten commits to the remote:
 
-```
-git log --oneline --graph --decorate -n 50
-```
+   ```shell
+   git push --force-with-lease
+   ```
 
-Observe how merge keeps a branching point while rebase produces a linear
-sequence of commits.
+4. Inspect the history:
 
-## Safety notes
+   ```shell
+   git log --oneline --graph --decorate -n 20
+   ```
 
-- Prefer `--force-with-lease` over `--force` for safer force-pushes.
-- Communicate with teammates before rebasing or force-pushing a branch that
-  others may have pulled.
+   Expected: The repository's history changed. The update made by the instructor
+   is listed before your updates.

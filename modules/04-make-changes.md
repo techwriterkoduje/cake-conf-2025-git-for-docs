@@ -1,65 +1,14 @@
-# Make changes in your branch
+# Making changes in a branch
 
-For this exercise we'll follow a branch naming convention that makes ownership
-explicit: `username/some-descriptive-name`. Use your own username for the prefix
-so it's easy to spot who created the branch.
+This module contains a walkthrough showing how to create a branch and then
+develop your doc in this branch.
 
-For the walkthrough below, use this branch name:
-
-```
-yourname/docs/add-examples
-```
-
-Replace `yourname` with your username and run:
-
-```
-git switch -c yourname/docs/add-examples
-```
-
-This creates and checks out the branch.
-
-## Deliberate conflict setup
-
-We'll make a couple of edits that will cause a conflict later when someone else
-changes the same lines on the main branch. First, change the header in
-`intro.md` (this is our deliberate conflict):
-
-Open `intro.md` and change the top-level header to something obvious, for
-example:
-
-```
-# Introduction to HomeSphere by <YOUR NAME>
-```
-
-Save the file and then check your status and diffs:
-
-```
-git status
-git diff
-git diff --staged
-```
-
-> **Aside:** Keep forgetting to save? You can set VS Code to auto-save your
-> changes. Go to **File > Preferences > Settings**, search for "Auto Save", and
-> set it to "afterDelay".
-
-You should see the change in the unstaged diff. Now stage and observe the status
-again:
-
-```
-git add website/intro.md
-git status
-git diff --staged
-```
-
----
-
-### Aside: commit message conventions
+## Commit message conventions
 
 Before you write your first commit message, a short note on conventions. Clear
 messages make history useful. A common convention used by teams is:
 
-```
+```text
 <type>(scope?): short summary
 
 optional longer description
@@ -68,104 +17,205 @@ optional longer description
 Common `type` values: `feat`, `fix`, `docs`, `chore`, `refactor`, `test`. For
 example:
 
-```
+```text
 docs(intro): clarify workshop purpose
 ```
 
-Keep the first line under ~72 characters and use the body for details when
+Keep the first line under 72 characters and use the body for details when
 needed.
 
----
+## Auto-save in VS Code
 
-Now commit the change:
+You can set VS Code to auto-save your changes. Go to **File > Preferences >
+Settings**, search for **Auto Save**, and set it to **afterDelay**.
 
-```
-git commit -m "edit: update intro header for conflict demo"
-git status
-```
+## Exercises
 
-If you make new changes now, remember to add them again before committing.
+### Set up a branch
 
-## Multiple edits and staging behavior
+For exercises in this module, use the following branch name:
 
-Next, edit `style-guide.md` and add a new H2 near the top. For example, add:
-
-```
-## New guidance: Accessibility first
-
-Add a short sentence about headings and accessibility.
+```text
+<yourName>/docs/add-examples
 ```
 
-Check status — you should see the file as modified but unstaged:
+This naming convention will allow us to recognize the branch owner easily.
 
-```
-git status
-```
+To create and check out your branch, run:
 
-Now make another change to the same `style-guide.md` file (a second, different
-edit) — for example add another paragraph lower down. Check status again; the
-file is still unstaged because you haven't added it yet.
-
-```
-git status
+```shell
+git switch -c <yourName>/docs/add-examples
 ```
 
-Stage the file and commit both changes together:
+### Make a single change
 
-```
-git add website/style-guide.md
-git status
-git commit -m "docs: add accessibility guidance and extra note"
-```
+We'll make an edit that will cause a conflict later when someone else changes
+the same lines on the `main` branch.
 
-Push your branch to the remote and set the upstream:
+1. Open `intro.md`.
+2. Change the top-level header to something obvious, for example:
 
-```
-git push --set-upstream origin yourname/docs/add-examples
-```
+   ```markdown
+   # Introduction to HomeSphere by <yourName>
+   ```
 
-## Amend the last commit and force-push
+3. Save the file.
+4. Check the status and diffs for unstaged and staged changes:
 
-Now, if you notice a typo in your last commit message or want to add a small
-change to the same commit, make the change (edit a file), stage it, then run:
+   ```shell
+   git status
+   git diff
+   git diff --staged
+   ```
 
-```
-git add <file>
-git commit --amend --no-edit
-```
+   Expected: The file is modified and not staged for commit. Changes from the
+   modified file are shown only in the unstaged diff.
 
-`--no-edit` keeps the same commit message; omit it if you want to edit the
-message.
+5. Add the file to the staging area. and then check the status and the diff for
+   staged changes:
 
-Because you've already pushed the original commit, you'll need to force-push the
-amended commit to update the remote branch:
+   ```shell
+   git add website/intro.md
+   ```
 
-```
-git push --force
-```
+6. Check the status and the diff for staged changes:
 
-Note: force-pushing rewrites history on the remote branch. It's okay on a
-feature branch that only you are working on, but coordinate with others if
-anyone else might have based work on your branch.
+   ```shell
+   git status
+   git diff --staged
+   ```
 
-## Final checks
+   Expected: The file is modified and staged for commit. Changes from the
+   modified file are shown in the staged diff.
 
-Run these commands to confirm the state:
+7. Commit the change and check the status:
 
-```
-git status
-git log --oneline --decorate --graph --all -n 10
-git branch -vv
-```
+   ```shell
+   git commit -m "edit: update intro header for conflict demo"
+   git status
+   ```
 
-You should see your branch, your commits, and the remote tracking information.
+   Expected: Your branch is up to date and there's nothing to commit.
 
-## Exercise summary
+### Make multiple changes
 
-- Create `yourname/docs/add-examples` and switch to it.
-- Edit `intro.md` (header) and `style-guide.md` (add H2 + another change).
-- Use `git status`, `git diff`, `git add`, `git commit`, `git push` as shown.
-- Amend the last commit and force-push.
+1. Open `style-guide.md`.
+2. Add a new H2 near the top. For example:
 
-Expected: you will have a published feature branch with several commits; one
-amended commit will be force-pushed.
+   ```markdown
+   ## New guidance: Accessibility first
+
+   Add a short sentence about headings and accessibility.
+   ```
+
+3. Save changes and check the status:
+
+   ```shell
+   git status
+   ```
+
+   Expected: The file is modified and not staged for commit.
+
+4. Add the file to the staging area and check the status:
+
+   ```shell
+   git add website/style-guide.md
+   git status
+   ```
+
+   Expected: The file is modified and staged for commit.
+
+5. Make another edit. For example, add another paragraph lower down.
+6. Save changes and check the status.
+
+   ```shell
+   git status
+   ```
+
+   Expected: The file is modified and is both staged and not staged for commit.
+   This is because you only staged your first change. You saved the second
+   change in the working directory but you didn't add it to the staging area.
+
+7. Add the file to the staging area and check the status:
+
+   ```shell
+   git add website/style-guide.md
+   git status
+   ```
+
+   Expected: The file is modified and staged for commit.
+
+8. Commit both changes:
+
+   ```shell
+   git commit -m "docs: add accessibility guidance and extra note"
+   ```
+
+9. Push your branch to the remote server and create a tracking relationship
+   between your local branch and the remote branch:
+
+   ```shell
+   git push --set-upstream origin yourname/docs/add-examples
+   ```
+
+### Update the last commit
+
+You noticed a typo in your last edit. You want to fix the issue but you don't
+want to create a new commit in the history. Instead, you want to modify your
+last commit to include the fix.
+
+> WARNING: The operations in this exercise are considered "destructive" because
+> they rewrite history of your local and remote branches. It's okay on a feature
+> branch that only you are working on, but coordinate with others if anyone else
+> might have based work on your branch.
+
+1. Open `style-guide.md`.
+2. Fix the typo.
+3. Save changes and add the file to the staging area:
+
+   ```shell
+   git add website/style-guide.md
+   ```
+
+4. Commit your changes to your local branch. The `--amend` and `--no-edit` flags
+   tell Git to update the last commit with your change and keep the same commit
+   message.
+
+   ```shell
+   git commit --amend --no-edit
+   ```
+
+5. Push your changes to the remote branch. Because you already pushed the
+   original commit, you need to force-push the amended commit to update the
+   remote branch:
+
+   ```shell
+   git push --force
+   ```
+
+### Run final checks
+
+1. Check the status:
+
+   ```shell
+   git status
+   ```
+
+   Expected: The branch is up to date.
+
+2. Check the history:
+
+   ```shell
+   git log --oneline --decorate --graph --all -n 10
+   ```
+
+   Expected: The history contains your commits.
+
+3. Check the branch information:
+
+   ```shell
+   git branch -vv
+   ```
+
+   Expected: The tracking information shows that the remote branch for your
+   local branch is `origin/<yourName>/docs/add-examples`.
